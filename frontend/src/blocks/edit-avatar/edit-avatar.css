@@ -1,0 +1,17 @@
+.edit-avatar {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  opacity: 0;
+  background-image: url(../../image/edit.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0,0,0,0%);
+  border-radius: 50%;
+  border: none;
+}
+
+.edit-avatar:hover {
+  opacity: 1;
+  background-color: rgba(0,0,0,80%);
+}

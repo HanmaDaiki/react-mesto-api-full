@@ -1,0 +1,12 @@
+.tooltip__container {
+  position: relative;
+  border-radius: 10px;
+  background-color: #fff;
+  width: 430px;
+}
+
+@media screen and (max-width: 429px) {
+  .tooltip__container {
+    width: 282px;
+  }
+}

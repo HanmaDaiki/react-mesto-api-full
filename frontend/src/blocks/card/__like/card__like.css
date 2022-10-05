@@ -1,0 +1,6 @@
+.card__like {
+  display: flex;
+  flex-direction: column;
+  width: 22px;
+  margin: 22px 20px 3px 0;
+}

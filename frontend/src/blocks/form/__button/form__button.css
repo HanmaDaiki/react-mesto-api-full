@@ -1,0 +1,19 @@
+.form__button {
+  margin-top: calc(216px - 30px);
+  height: 50px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  border-radius: 2px;
+}
+
+.form__button:hover {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 357px) {
+  .form__button {
+    margin-top: calc(173px - 30px);
+    height: 46px;
+  }
+}
