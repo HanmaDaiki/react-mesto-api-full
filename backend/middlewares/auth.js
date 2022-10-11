@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const AuthorizationErr = require('../errors/AuthorizationErr');
 
 module.exports = (req, res, next) => {
-  const token = req.cookies.jwt;
+  const token = req.headers.authorization.replace('Bearer ', '');
 
   if (!token) {
     throw new AuthorizationErr('Неправильные почта или пароль');

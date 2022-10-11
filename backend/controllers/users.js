@@ -15,13 +15,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign({ _id: user._id.toString() }, 'super-strong-secret', { expiresIn: '7d' });
 
-      res
-        .cookie('jwt', token, {
-          maxAge: 3600000,
-          httpOnly: true,
-        })
-        .send({ email: user.email })
-        .end();
+      res.send({ token });
     })
     .catch((error) => next(error));
 };
@@ -58,7 +52,7 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users))
     .catch((error) => next(error));
 };
 
@@ -67,7 +61,13 @@ module.exports.getMeInfoUser = (req, res, next) => {
 
   User.findById(_id)
     .then((user) => {
-      res.send({ data: user });
+      res.send({
+        _id: user._id,
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+      });
     })
     .catch((error) => next(error));
 };
@@ -80,7 +80,7 @@ module.exports.getUserById = (req, res, next) => {
       if (user === null) {
         throw new NotFoundErr('Такого id пользователя не существует!');
       }
-      return res.send({ data: user });
+      return res.send(user);
     })
     .catch((error) => {
       if (error.name === 'CastError') {
@@ -101,7 +101,7 @@ module.exports.updateUserInfo = (req, res, next) => {
         throw new NotFoundErr('Несуществующий id пользователя!!');
       }
 
-      return res.send({ data: user });
+      return res.send(user);
     })
     .catch((error) => {
       if (error.name === 'ValidationError') {
@@ -126,7 +126,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
         throw new NotFoundErr('Несуществующий id пользователя!');
       }
 
-      return res.send({ data: user });
+      return res.send(user);
     })
     .catch((error) => {
       if (error.name === 'ValidationError') {

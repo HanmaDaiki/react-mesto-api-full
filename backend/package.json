@@ -8,10 +8,6 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HanmaDaiki/express-mesto-gha.git"
-  },
   "keywords": [
     "express",
     "js",

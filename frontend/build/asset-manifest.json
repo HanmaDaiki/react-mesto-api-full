@@ -1,24 +1,16 @@
 {
-  "files": {
-    "main.css": "/react-mesto-auth/static/css/main.c0c34e22.css",
-    "main.js": "/react-mesto-auth/static/js/main.6ff96d85.js",
-    "static/js/787.cda612ba.chunk.js": "/react-mesto-auth/static/js/787.cda612ba.chunk.js",
-    "static/media/Inter-Black.ttf": "/react-mesto-auth/static/media/Inter-Black.24d6be6c502d39fb3ce1.ttf",
-    "static/media/Inter-Medium.ttf": "/react-mesto-auth/static/media/Inter-Medium.e7231ba33760832432b8.ttf",
-    "static/media/Inter-Regular.ttf": "/react-mesto-auth/static/media/Inter-Regular.2391725004ae05a27e8e.ttf",
-    "static/media/icon-like.svg": "/react-mesto-auth/static/media/icon-like.e3b9ba5840ebe97bc077.svg",
-    "index.html": "/react-mesto-auth/index.html",
-    "static/media/icon-del.svg": "/react-mesto-auth/static/media/icon-del.ce3b64935accf9b8212e.svg",
-    "static/media/icon-like_active.svg": "/react-mesto-auth/static/media/icon-like_active.35948469632d0421d697.svg",
-    "static/media/icon-edit.svg": "/react-mesto-auth/static/media/icon-edit.6c7bf05444b9793fdf6e.svg",
-    "static/media/icon-close.svg": "/react-mesto-auth/static/media/icon-close.039f1f5203f653b4bacd.svg",
-    "static/media/icon-add.svg": "/react-mesto-auth/static/media/icon-add.bed8c136e13907f5eefb.svg",
-    "main.c0c34e22.css.map": "/react-mesto-auth/static/css/main.c0c34e22.css.map",
-    "main.6ff96d85.js.map": "/react-mesto-auth/static/js/main.6ff96d85.js.map",
-    "787.cda612ba.chunk.js.map": "/react-mesto-auth/static/js/787.cda612ba.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.c0c34e22.css",
-    "static/js/main.6ff96d85.js"
-  ]
+  "main.css": "./static/css/main.c8740367.chunk.css",
+  "main.js": "./static/js/main.6b8e0411.chunk.js",
+  "main.js.map": "./static/js/main.6b8e0411.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.70c844b6.js",
+  "runtime~main.js.map": "./static/js/runtime~main.70c844b6.js.map",
+  "static/js/2.da8fd94e.chunk.js": "./static/js/2.da8fd94e.chunk.js",
+  "static/js/2.da8fd94e.chunk.js.map": "./static/js/2.da8fd94e.chunk.js.map",
+  "static/js/3.c7b6313b.chunk.js": "./static/js/3.c7b6313b.chunk.js",
+  "static/js/3.c7b6313b.chunk.js.map": "./static/js/3.c7b6313b.chunk.js.map",
+  "index.html": "./index.html",
+  "precache-manifest.840fa174fd6c5d844d4fa2a4d319fac9.js": "./precache-manifest.840fa174fd6c5d844d4fa2a4d319fac9.js",
+  "service-worker.js": "./service-worker.js",
+  "static/css/main.c8740367.chunk.css.map": "./static/css/main.c8740367.chunk.css.map",
+  "static/media/index.css": "./static/media/icon-like_active.933106ea.svg"
 }

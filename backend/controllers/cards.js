@@ -6,7 +6,7 @@ const AccessErr = require('../errors/AccessErr');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.status(200).send({ data: cards }))
+    .then((cards) => res.status(200).send(cards))
     .catch((error) => next(error));
 };
 
@@ -15,7 +15,7 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   Card.create({ name, link, owner: userId })
-    .then((card) => res.status(200).send({ data: card }))
+    .then((card) => res.status(200).send(card))
     .catch((error) => {
       if (error.name === 'ValidationError') {
         throw new ValidationErr('Некорректные данные!');
@@ -38,7 +38,7 @@ module.exports.deleteCard = (req, res, next) => {
         throw new AccessErr('Ошибка доступа к карточке');
       }
 
-      return res.status(200).send({ data: card });
+      return res.status(200).send(card);
     })
     .catch((error) => {
       if (error.name === 'CastError') {
@@ -61,7 +61,7 @@ module.exports.likeCard = (req, res, next) => {
         throw new NotFoundErr('Добавление лайка несуществующей карточки!');
       }
 
-      return res.status(200).send({ data: card });
+      return res.status(200).send(card);
     })
     .catch((error) => {
       if (error.name === 'CastError') {
@@ -83,8 +83,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (card === null) {
         throw new NotFoundErr('Добавление лайка несуществующей карточки!');
       }
-
-      return res.status(200).send({ data: card });
+      return res.status(200).send(card);
     })
     .catch((error) => {
       if (error.name === 'CastError') {

@@ -1,7 +1,6 @@
 class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
   }
 
   _checkResponse(res) {
@@ -12,10 +11,12 @@ class Api {
   }
 
   signUp(email, password) {
-    console.log(`email: ${email}, password: ${password}, fetch ${this._baseUrl}/signup`);
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
       body: JSON.stringify({
         password: password,
         email: email,
@@ -26,8 +27,10 @@ class Api {
   signIn(email, password) {
     return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
-      credentials: 'include',
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
       body: JSON.stringify({
         password: password,
         email: email,
@@ -35,6 +38,7 @@ class Api {
     })
       .then(this._checkResponse)
       .then((data) => {
+        console.log(data)
         if (data.token) {
           localStorage.setItem("jwt", data.token);
           return data;
@@ -45,65 +49,101 @@ class Api {
   identificationUser(jwt) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+      },
     }).then(this._checkResponse);
   }
 
-  getCards() {
+  getCards(jwt) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+      },
     }).then(this._checkResponse);
   }
 
-  getUserInfo() {
+  getUserInfo(jwt) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+      },
     }).then(this._checkResponse);
   }
 
-  editInfoUser(user) {
+  editInfoUser(user, jwt) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+      },
       body: JSON.stringify(user),
     }).then(this._checkResponse);
   }
 
-  addNewCard(card) {
+  addNewCard(card, jwt) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+      },
       body: JSON.stringify(card),
     }).then(this._checkResponse);
   }
 
-  patchAvatar(link) {
+  patchAvatar(link, jwt) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+      },
       body: JSON.stringify(link),
     }).then(this._checkResponse);
   }
 
-  deleteCard(id) {
+  deleteCard(id, jwt) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+      },
     }).then(this._checkResponse);
   }
 
-  changeLikeCardStatus(id, isLiked) {
+  changeLikeCardStatus(id, isLiked, jwt) {
     if (!isLiked) {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "PUT",
-        headers: this._headers,
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${jwt}`,
+        },
       }).then(this._checkResponse);
     } else {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "DELETE",
-        headers: this._headers,
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${jwt}`,
+        },
       }).then(this._checkResponse);
     }
   }
@@ -111,7 +151,4 @@ class Api {
 
 export const api = new Api({
   baseUrl: "https://api.daikihanma.nomoredomains.icu",
-  headers: {
-    "Content-Type": "application/json",
-  },
 });

@@ -33,13 +33,14 @@ function App() {
   });
   const [cards, setCards] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  const token = localStorage.getItem("jwt");
   const [email, setEmail] = useState("");
   const history = useHistory();
 
   useEffect(() => {
     if (loggedIn) {
       api
-        .getCards()
+        .getCards(token)
         .then((cards) => {
           setCards(cards);
         })
@@ -48,7 +49,7 @@ function App() {
         });
 
       api
-        .getUserInfo()
+        .getUserInfo(token)
         .then((user) => {
           setCurrentUser({
             name: user.name,
@@ -62,6 +63,19 @@ function App() {
         });
     }
   }, [loggedIn]);
+
+  useEffect(() => {
+    api
+      .identificationUser(token)
+      .then((data) => {
+        setEmail(data.email);
+        setLoggedIn(true);
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(`В апи identificationUser ошибка - ${err}`);
+      });
+  }, []);
 
   function handleExitProfile() {
     setLoggedIn(false);
@@ -96,7 +110,7 @@ function App() {
 
   function handleDeleteCard(removedCard) {
     api
-      .deleteCard(removedCard._id)
+      .deleteCard(removedCard._id, token)
       .then(() => {
         setCards(
           cards.filter((card) => {
@@ -109,10 +123,9 @@ function App() {
       });
   }
 
-  function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser.id);
+  function handleCardLike(card, isLiked) {  
     api
-      .changeLikeCardStatus(card._id, isLiked)
+      .changeLikeCardStatus(card._id, isLiked, token)
       .then((newCard) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
@@ -125,7 +138,7 @@ function App() {
 
   function handleUpdateAvatar(link) {
     api
-      .patchAvatar(link)
+      .patchAvatar(link, token)
       .then((user) => {
         setCurrentUser({
           name: user.name,
@@ -144,7 +157,7 @@ function App() {
 
   function handleUpdateUser(user) {
     api
-      .editInfoUser(user)
+      .editInfoUser(user, token)
       .then((updateUserInfo) => {
         setCurrentUser(updateUserInfo);
       })
@@ -158,7 +171,7 @@ function App() {
 
   function handleAddPlace(card) {
     api
-      .addNewCard(card)
+      .addNewCard(card, token)
       .then((card) => {
         setCards([card, ...cards]);
       })
