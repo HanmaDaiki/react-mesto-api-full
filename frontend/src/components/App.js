@@ -42,7 +42,7 @@ function App() {
       api
         .getCards(token)
         .then((cards) => {
-          setCards(cards);
+          setCards(cards.reverse());
         })
         .catch((err) => {
           console.log(`В апи getCards ошибка - ${err}`);
@@ -159,7 +159,12 @@ function App() {
     api
       .editInfoUser(user, token)
       .then((updateUserInfo) => {
-        setCurrentUser(updateUserInfo);
+        setCurrentUser({
+          name: updateUserInfo.name,
+          about: updateUserInfo.about,
+          avatar: updateUserInfo.avatar,
+          id: updateUserInfo._id,
+        });
       })
       .then(() => {
         closeAllPopups();

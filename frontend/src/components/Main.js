@@ -13,6 +13,7 @@ function Main({
   cards,
 }) {
   const { name, about, avatar } = useContext(CurrentUserContext);
+
   return (
     <main className="main">
       <section className="profile">

@@ -38,7 +38,6 @@ class Api {
     })
       .then(this._checkResponse)
       .then((data) => {
-        console.log(data)
         if (data.token) {
           localStorage.setItem("jwt", data.token);
           return data;
@@ -150,5 +149,6 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://api.daikihanma.nomoredomains.icu",
+  baseUrl: "https://api.daikihanma.nomoredomains.icu", // prod
+  // dev: baseUrl: "http://localhost:3000"
 });

@@ -1,5 +1,6 @@
 const allowedCors = [
   'https://daikihanma.nomoredomains.icu/',
+  'http://daikihanma.nomoredomains.icu/',
   'http://localhost:3001',
 ];
 
