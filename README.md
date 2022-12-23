@@ -8,14 +8,16 @@
   <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB">
   <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white">
 </p>
+
 # О репозитории
 
 Проект Место был создан в рамках одного большого проекта для изучения технологий Веб-разработки.
 В него до конечного резальтата входил и ванильный JS код и рефаторинг его под классы. 
 Так же в процессе был использова вебпак для сборки проекта.
 Но после всех этапов реафакторинга получилось приложение на React, созданное при помощи CRA и Backend использующее Express.
-С
-сылки на разные этапы разработки этого приложения:
+
+Ссылки на разные этапы разработки этого приложения:
+
 1. https://github.com/HanmaDaiki/mesto
 2. https://github.com/HanmaDaiki/mesto-react
 3. https://github.com/HanmaDaiki/react-mesto-auth
